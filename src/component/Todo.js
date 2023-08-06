@@ -1,4 +1,4 @@
-function Todo({ todo, index, completeTodo, removeTodo }) {
+function Todo({ todo, index, completeTodo, editTodo, removeTodo }) {
   return (
     <div
       className="todo"
@@ -11,6 +11,12 @@ function Todo({ todo, index, completeTodo, removeTodo }) {
           onClick={() => completeTodo(index)}
         >
           Complete
+        </button>
+        <button
+          disabled={todo.isCompleted ? "disabled" : ""}
+          onClick={() => editTodo(index)}
+        >
+          Edit
         </button>
         <button onClick={() => removeTodo(index)}>Delete</button>
       </div>

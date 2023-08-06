@@ -27,6 +27,24 @@ function App() {
     newTodos[index].isCompleted = true;
     setTodos(newTodos);
   };
+  const editTodo = (index) => {
+    const newTodos = [...todos];
+    const editedTodo = prompt("Edit the todo:");
+    const existedTodo = todos.filter(
+      (item) => item.text === editedTodo && item.isCompleted === false
+    );
+    if (
+      editedTodo !== null &&
+      editedTodo.trim() !== "" &&
+      existedTodo.length === 0
+    ) {
+      newTodos[index].text = editedTodo;
+      setTodos(newTodos);
+    } else {
+      alert("Task already existed!!!");
+      return;
+    }
+  };
   const removeTodo = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
@@ -43,6 +61,7 @@ function App() {
             todo={todo}
             completeTodo={completeTodo}
             removeTodo={removeTodo}
+            editTodo={editTodo}
           />
         ))}
         <TodoForm dataTodo={todos} addTodo={addTodo} />

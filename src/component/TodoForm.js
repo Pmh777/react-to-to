@@ -4,14 +4,11 @@ function TodoForm({ addTodo, dataTodo }) {
   const [value, setValue] = React.useState("");
 
   const handleSubmit = (e) => {
-    console.log(e);
     e.preventDefault();
     if (!value) return;
     const existTodo = dataTodo.filter(
-      (item) => item.text == value && item.isCompleted == false
+      (item) => item.text === value && item.isCompleted === false
     );
-    console.log(dataTodo);
-    console.log(existTodo);
     if (existTodo.length > 0) {
       alert("Task already existed!!!");
       return;
